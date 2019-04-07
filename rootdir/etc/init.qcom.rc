@@ -317,11 +317,15 @@ on post-fs-data
 
     setprop ro.hw.hwrev ${ro.boot.hwrev}
 
-    #Create PERFD deamon related dirs
-    mkdir /data/system/perfd 0770 root system
-    chmod 2770 /data/system/perfd
     mkdir /persist/drm 0770 system system
-    rm /data/system/perfd/default_values
+
+    #Create PERFD deamon related dirs
+    mkdir /data/vendor/perfd 0770 root system
+    chmod 2770 /data/vendor/perfd
+    rm /data/vendor/perfd/default_values
+
+    #Create IOP  deamon related dirs
+    mkdir /data/vendor/iop 0700 root system
 
 service mmi-boot-sh /vendor/bin/init.mmi.boot.sh
     class core
